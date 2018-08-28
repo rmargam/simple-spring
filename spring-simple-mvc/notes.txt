@@ -1,0 +1,55 @@
+1. Add spring web mvc dependencies in maven pom.
+
+2. Add my webapp initializer into the configuration file.
+
+    a. Make a configuration with the annotations @Configuration @EnableWebMvc
+    registers a number of Spring MVC infrastructure beans also adapting to dependencies available on the classpath: e.g. payload converters for JSON, XML, etc.
+
+    b. add "implements WebMvcConfigurer"
+
+3. add this dependency otherwise the tomcat will not run.
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.0.1</version>
+                <scope>provided</scope>
+            </dependency>
+
+4. Add this plugin so that intellij can build the WAR.
+
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
+                <type>maven-plugin</type>
+            </dependency>
+
+5. Add this dependency so that the freemarker template works form the context loader.
+
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.23</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${org.springframework.version}</version>
+            </dependency>
+
+6. Add the ftl configuration for the view to work.
+
+7. Add the FTL file in the resources Directory under src/main/resources. This makes Maven package the files.
+    If you do not want to place the files in the resources. Make sure maven can find the files and package it.
+    perhaps make changes to the maven-war-plugin in  plugins.
+
+8. Make sure that the Ftl configurer is has the prefix set to the path that the files are packaged in.
+
+        freeMarkerViewResolver.setPrefix("WEB-INF/classes/ftl");
+
+9.
+
+
+
+
