@@ -1,6 +1,5 @@
 package com.rahulmargam;
 
-import com.rahulmargam.configuration.OrgConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
